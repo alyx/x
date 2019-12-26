@@ -10,7 +10,7 @@ import (
 func UUID() string {
 	uu, err := uuid.NewRandom()
 	if err != nil {
-		panic("UUID is fucked")
+		return ""
 	}
 
 	return hex.EncodeToString(uu[:])
