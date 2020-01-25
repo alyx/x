@@ -33,7 +33,8 @@ func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Con
 		viewContext["reverse"] = c.Echo().Reverse
 	}
 
-	return tmpl.ExecuteTemplate(w, "base", data) // layout -> defined in each layout template
+	components := strings.Split(name, ":")
+	return tmpl.ExecuteTemplate(w, components[0], data) // layout -> defined in each layout template
 }
 
 func match(pattern string, name string) bool {
